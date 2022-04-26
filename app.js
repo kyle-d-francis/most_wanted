@@ -93,8 +93,46 @@ function mainMenu(person, people) {
     }
 }
 // End of mainMenu()
-function findPersonFamily(person, people);
-    
+function findPersonFamily(people){
+    let personFamily = promptFor('Do you want to search for Spouse, Siblings, or Parents?')
+    switch (personFamily){
+        case "Spouse":
+        searchResults = searchBySpouse(people);
+        break;
+        case "Siblings":
+        searchResults = searchBySiblings(people);
+        break;
+        case "Parents":
+        searchResults = searchByParents(people);
+        break;
+    }
+function searchBySpouse(person, people){
+    let findSpouse = people.filter(function(person){
+        if (person.currentSpouse === people.id){
+            return true
+        }
+        
+    })
+    return foundPerson
+}
+function searchBySiblings(person, people){
+    let findSiblings = people.filter(function(person){
+        if (person.parent === person.parent){
+            return true
+        }
+        
+    })
+    return foundPerson
+} 
+function searchByParents(person, people){
+    let findParent = people.filter(function(person){
+        if (person.parent === people.id){
+            return true
+        }
+        
+    })
+    return foundPerson
+}
 
 
 /**
@@ -151,7 +189,7 @@ function searchByTraits(people) {
     mainMenu(searchResults, people);
 }
 function searchByGender(){
-    let gender = promptFor("What is the person's gender?", chars);
+    let searchGender = promptFor("What is the person's gender?", chars);
 
     let gender = people.gender(function (person) {
         if (person.gender === gender){
@@ -161,7 +199,7 @@ function searchByGender(){
     return foundPerson;
 }
 function searchByDob(){
-    let Dob = promptFor("What is the person's date of birth?", chars);
+    let searchDob = promptFor("What is the person's date of birth?", chars);
 
     let dob = people.dob(function (person) {
         if (person.dob === dob){
@@ -171,9 +209,9 @@ function searchByDob(){
     return foundPerson;
 }
 function searchByHeight(){
-    let height = promptFor("What is the person's height?", chars);
+    let searchHeight = promptFor("What is the person's height?", chars);
 
-    let dob = people.height(function (person) {
+    let height = people.height(function (person) {
         if (person.height === height){
             return true;
         }
@@ -181,7 +219,7 @@ function searchByHeight(){
     return foundPerson;
 } 
 function searchByWeight(){
-    let weight = promptFor("What is the person's weight", chars);
+    let SearchWeight = promptFor("What is the person's weight", chars);
 
     let weight = people.weight(function (person) {
         if (person.weight === weight){
@@ -191,7 +229,7 @@ function searchByWeight(){
     return foundPerson;
 }  
 function searchByEyeColor(){
-    let eyeColor = promptFor("What is the person's eye color?", chars);
+    let SearchEyeColor = promptFor("What is the person's eye color?", chars);
 
     let eyeColor = people.eyeColor(function (person) {
         if (person.eyeColor === eyeColor){
@@ -201,7 +239,7 @@ function searchByEyeColor(){
     return foundPerson;
 }
 function searchByOccupation(){
-    let occupation = promptFor("What is the person's occupation?", chars);
+    let SearchOccupation = promptFor("What is the person's occupation?", chars);
 
     let occupation = people.occupation(function (person) {
         if (person.occupation === occupation){
