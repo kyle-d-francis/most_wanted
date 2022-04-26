@@ -67,7 +67,6 @@ function mainMenu(person, people) {
             //! TODO #1: Utilize the displayPerson function //////////////////////////////////////////
             // HINT: Look for a person-object stringifier utility function to help
             let personInfo = displayPerson(person[0]);
-            alert(personInfo);
             break;
         case "family":
             //! TODO #2: Declare a findPersonFamily function //////////////////////////////////////////
@@ -151,6 +150,12 @@ function displayPeople(people) {
 function displayPerson(person) {
     let personInfo = `First Name: ${person.firstName}\n`;
     personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `dob: ${person.dob}\n`;
+    personInfo += `weight: ${person.weight}\n`;
+    personInfo += `eye color: ${person.eyeColor}\n`;
+    personInfo += `occupation: ${person.occupation}\n`;
+    personInfo += `height: ${person.height}\n`;
+    personInfo += `gender: ${person.gender}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
     alert(personInfo);
 }
