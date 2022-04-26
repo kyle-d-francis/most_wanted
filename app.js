@@ -113,7 +113,7 @@ function mainMenu(person, people) {
 }
 // End of searchByName()
 function searchByTraits(people) {
-    let searchTraits = promptFor(
+    let searchTraits = prompt(
         "what traits do you want to search by enter 'gender', 'dob', 'height' , 'weight' 'eye color' , or ' occupation'",
     ).toLowerCase();
     let searchResults;
@@ -146,18 +146,17 @@ function searchByTraits(people) {
     // Calls the mainMenu() only AFTER we find the SINGLE PERSON
     mainMenu(searchResults, people);
 }
-    function searchByGender(){
-        let searchGender = promptFor("What is the person's gender?", chars);
+    function searchByGender(person, people){
+        let searchGender = prompt(`What is the person's gender?`);
     
-        let gender = people.gender(function (person) {
+        let gender = person.filter(function(gender) {
             if (person.gender === gender){
                 return true;
-            }
-        });
+            };
         return foundPerson;
-    }
+    })}
     function searchByDob(){
-        let searchDob = promptFor("What is the person's date of birth?", chars);
+        let searchDob = prompt("What is the person's date of birth?", chars);
     
         let dob = people.dob(function (person) {
             if (person.dob === dob){
