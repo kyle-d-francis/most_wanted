@@ -93,6 +93,10 @@ function mainMenu(person, people) {
     }
 }
 // End of mainMenu()
+function findPersonFamily(person, people);
+    let person = people.filter(function(person){
+        if person
+    })
 
 /**
  * This function is used when searching the people collection by
@@ -114,8 +118,39 @@ function searchByName(people) {
 }
 // End of searchByName()
 function searchByTraits(people) {
-    let gender = promptFor("What is the person's gender?", chars);
-    let eyeColor = promptFor("What is the person's eye color?", chars);
+    let searchTraits = promptFor(
+        "what traits do you want to search by enter 'gender', 'dob', 'height' , 'weight' 'eye color' , or ' occupation'",
+    ).toLowerCase();
+    let searchResults;
+    // Routes our application based on the user's input
+    switch (searchType) {
+        case "gender":
+            searchResults = searchByGender(people);
+            break;
+        case "dob":
+            searchResults = searchByDob(people);
+        case "height":
+            searchResults = searchByHeight(people);
+        case "weight":
+            searchResults = searchByWeight(people);
+        case "eye color":
+            searchResults = searchByEyeColor(people);
+        case "occupations": 
+            searchResults = searchByOccupation(people);
+           
+            
+            break;
+        default:
+            // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
+            app(people);
+            break;
+    }
+    // Calls the mainMenu() only AFTER we find the SINGLE PERSON
+    mainMenu(searchResults, people);
+}
+    
+    // let gender = promptFor("What is the person's gender?", chars);
+    // let eyeColor = promptFor("What is the person's eye color?", chars);
 
     // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
     let foundPerson = people.filter(function (person) {
