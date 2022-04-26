@@ -114,7 +114,18 @@ function searchByName(people) {
     return foundPerson;
 }
 // End of searchByName()
+function searchByTraits(people) {
+    let gender = promptFor("What is the person's gender?", chars);
+    let eyeColor = promptFor("What is the person's eye color?", chars);
 
+    // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
+    let foundPerson = people.filter(function (person) {
+        if (person.gender === gender && person.eyeColor === eyeColor) {
+            return true;
+        }
+    });
+    return foundPerson;
+}
 /**
  * This function will be useful for STRINGIFYING a collection of person-objects
  * first and last name properties in order to easily send the information
