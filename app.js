@@ -93,55 +93,13 @@ function mainMenu(person, people) {
     }
 }
 // End of mainMenu()
-function findPersonFamily(people){
-    let personFamily = promptFor('Do you want to search for Spouse, Siblings, or Parents?')
-    switch (personFamily){
-        case "Spouse":
-        searchResults = searchBySpouse(people);
-        break;
-        case "Siblings":
-        searchResults = searchBySiblings(people);
-        break;
-        case "Parents":
-        searchResults = searchByParents(people);
-        break;
-    }
-function searchBySpouse(person, people){
-    let findSpouse = people.filter(function(person){
-        if (person.currentSpouse === people.id){
-            return true
-        }
-        
-    })
-    return foundPerson
-}
-function searchBySiblings(person, people){
-    let findSiblings = people.filter(function(person){
-        if (person.parent === person.parent){
-            return true
-        }
-        
-    })
-    return foundPerson
-} 
-function searchByParents(person, people){
-    let findParent = people.filter(function(person){
-        if (person.parent === people.id){
-            return true
-        }
-        
-    })
-    return foundPerson
-}
-
-
 /**
  * This function is used when searching the people collection by
  * a person-object's firstName and lastName properties.
  * @param {Array} people        A collection of person objects.
  * @returns {Array}             An array containing the person-object (or empty array if no match)
  */
-function searchByName(people) {
+ function searchByName(people) {
     let firstName = promptFor("What is the person's first name?", chars);
     let lastName = promptFor("What is the person's last name?", chars);
 
@@ -188,76 +146,106 @@ function searchByTraits(people) {
     // Calls the mainMenu() only AFTER we find the SINGLE PERSON
     mainMenu(searchResults, people);
 }
-function searchByGender(){
-    let searchGender = promptFor("What is the person's gender?", chars);
-
-    let gender = people.gender(function (person) {
-        if (person.gender === gender){
-            return true;
+    function searchByGender(){
+        let searchGender = promptFor("What is the person's gender?", chars);
+    
+        let gender = people.gender(function (person) {
+            if (person.gender === gender){
+                return true;
+            }
+        });
+        return foundPerson;
+    }
+    function searchByDob(){
+        let searchDob = promptFor("What is the person's date of birth?", chars);
+    
+        let dob = people.dob(function (person) {
+            if (person.dob === dob){
+                return true;
+            }
+        });
+        return foundPerson;
+    }
+    function searchByHeight(){
+        let searchHeight = promptFor("What is the person's height?", chars);
+    
+        let height = people.height(function (person) {
+            if (person.height === height){
+                return true;
+            }
+        });
+        return foundPerson;
+    } 
+    function searchByWeight(){
+        let SearchWeight = promptFor("What is the person's weight", chars);
+    
+        let weight = people.weight(function (person) {
+            if (person.weight === weight){
+                return true;
+            }
+        });
+        return foundPerson;
+    }  
+    function searchByEyeColor(){
+        let SearchEyeColor = promptFor("What is the person's eye color?", chars);
+    
+        let eyeColor = people.eyeColor(function (person) {
+            if (person.eyeColor === eyeColor){
+                return true;
+            }
+        });
+        return foundPerson;
+    }
+    function searchByOccupation(){
+        let SearchOccupation = promptFor("What is the person's occupation?", chars);
+    
+        let occupation = people.occupation(function (person) {
+            if (person.occupation === occupation){
+                return true;
+            }
+        });
+        return foundPerson;
+    }
+function findPersonFamily(people){
+    let personFamily = promptFor('Do you want to search for Spouse, Siblings, or Parents?')
+    switch (personFamily){
+        case "Spouse":
+        searchResults = searchBySpouse(people);
+        break;
+        case "Siblings":
+        searchResults = searchBySiblings(people);
+        break;
+        case "Parents":
+        searchResults = searchByParents(people);
+        break;
+    }
+function searchBySpouse(person, people){
+    let findSpouse = people.filter(function(person){
+        if (person.currentSpouse === people.id){
+            return true
         }
-    });
-    return foundPerson;
+        
+    })
+    return foundPerson
 }
-function searchByDob(){
-    let searchDob = promptFor("What is the person's date of birth?", chars);
-
-    let dob = people.dob(function (person) {
-        if (person.dob === dob){
-            return true;
+function searchBySiblings(person, people){
+    let findSiblings = people.filter(function(person){
+        if (person.parent === person.parent){
+            return true
         }
-    });
-    return foundPerson;
-}
-function searchByHeight(){
-    let searchHeight = promptFor("What is the person's height?", chars);
-
-    let height = people.height(function (person) {
-        if (person.height === height){
-            return true;
-        }
-    });
-    return foundPerson;
+        
+    })
+    return foundPerson
 } 
-function searchByWeight(){
-    let SearchWeight = promptFor("What is the person's weight", chars);
-
-    let weight = people.weight(function (person) {
-        if (person.weight === weight){
-            return true;
+function searchByParents(person, people){
+    let findParent = people.filter(function(person){
+        if (person.parent === people.id){
+            return true
         }
-    });
-    return foundPerson;
-}  
-function searchByEyeColor(){
-    let SearchEyeColor = promptFor("What is the person's eye color?", chars);
-
-    let eyeColor = people.eyeColor(function (person) {
-        if (person.eyeColor === eyeColor){
-            return true;
-        }
-    });
-    return foundPerson;
+        
+    })
+    return foundPerson
 }
-function searchByOccupation(){
-    let SearchOccupation = promptFor("What is the person's occupation?", chars);
-
-    let occupation = people.occupation(function (person) {
-        if (person.occupation === occupation){
-            return true;
-        }
-    });
-    return foundPerson;
-}
-    // let gender = promptFor("What is the person's gender?", chars);
-    // let eyeColor = promptFor("What is the person's eye color?", chars);
-
-    // The foundPerson value will be of type Array. Recall that .filter() ALWAYS returns an array.
-    let foundPerson = people.filter(function (person) {
-        if (person.gender === gender && person.eyeColor === eyeColor) {
-            return true;
-        }
-    });
-    return foundPerson;
 }
 /**
  * This function will be useful for STRINGIFYING a collection of person-objects
