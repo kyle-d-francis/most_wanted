@@ -59,7 +59,7 @@ function mainMenu(person, people) {
         return app(people);
     }
     let displayOption = prompt(
-        `Found ${people.every(firstName)} ${people.every(lastName)}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
+        `Found ${people.firstName} ${people.lastName}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
     );
     // Routes our application based on the user's input
     switch (displayOption) {
@@ -121,21 +121,27 @@ function searchByTraits(people) {
     switch (searchTraits) {
         case "gender":
             searchResults = searchByGender(people);
+
             break;
         case "dob":
             searchResults = searchByDob(people);
+
             break;
         case "height":
             searchResults = searchByHeight(people);
+
             break;
         case "weight":
             searchResults = searchByWeight(people);
+
             break;
         case "eye color":
             searchResults = searchByEyeColor(people);
+
             break;
         case "occupations": 
             searchResults = searchByOccupation(people);
+
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -161,52 +167,58 @@ function searchByTraits(people) {
     function searchByDob(){
         let searchDob = prompt("What is the person's date of birth?", chars);
     
-        let dob = people.dob(function (person) {
-            if (person.dob === dob){
-                return true;
-            }
+        let dob = people.filter(function (person) {
+            if (searchDob=== person.dob){
+                return true;}
+                if (searchDob != person.dob)
+                {return false;
+                };
         });
-        return foundPerson;
+        return dob;
     }
     function searchByHeight(){
         let searchHeight = promptFor("What is the person's height?", chars);
-    
-        let height = people.height(function (person) {
-            if (person.height === height){
-                return true;
-            }
+        let height = people.filter(function (person) {
+            if (searchHeight=== person.height){
+                return true;}
+                if (searchHeight != person.height)
+                {return false;
+                };
         });
-        return foundPerson;
+        return height;
     } 
     function searchByWeight(){
-        let SearchWeight = promptFor("What is the person's weight", chars);
-    
-        let weight = people.weight(function (person) {
-            if (person.weight === weight){
-                return true;
-            }
+        let searchWeight = promptFor("What is the person's weight", chars);
+        let weights = people.filter(function (person) {
+            if (searchWeight=== person.height){
+                return true;}
+                if (searchWeight != person.Weight)
+                {return false;
+                };
         });
-        return foundPerson;
+        return weights;
     }  
     function searchByEyeColor(){
         let SearchEyeColor = promptFor("What is the person's eye color?", chars);
-    
-        let eyeColor = people.eyeColor(function (person) {
-            if (person.eyeColor === eyeColor){
-                return true;
-            }
+        let eyeColor = people.filter(function (person) {
+            if (SearchEyeColor=== person.eyeColor){
+                return true;}
+                if (SearchEyeColor != person.eyeColor)
+                {return false;
+                };
         });
-        return foundPerson;
+        return eyeColor;
     }
     function searchByOccupation(){
         let SearchOccupation = promptFor("What is the person's occupation?", chars);
-    
-        let occupation = people.occupation(function (person) {
-            if (person.occupation === occupation){
-                return true;
-            }
+        let occupation = people.filter(function (person) {
+            if (SearchOccupation=== person.occupation){
+                return true;}
+                if (SearchOccupation != person.occupation)
+                {return false;
+                };
         });
-        return foundPerson;
+        return occupation;
     }
 function findPersonFamily(people){
     let personFamily = promptFor('Do you want to search for Spouse, Siblings, or Parents?')
