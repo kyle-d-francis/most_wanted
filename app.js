@@ -59,7 +59,7 @@ function mainMenu(person, people) {
         return app(people);
     }
     let displayOption = prompt(
-        `Found ${person[0].firstName} ${person[0].lastName}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
+        `Found ${person.firstName.toString()} ${person.lastName.toString()}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
     );
     // Routes our application based on the user's input
     switch (displayOption) {
@@ -149,12 +149,15 @@ function searchByTraits(people) {
     function searchByGender(person, people){
         let searchGender = prompt(`What is the person's gender?`);
     
-        let gender = person.filter(function(gender) {
-            if (person.gender === gender){
-                return true;
+        let gender = person.filter(function(person) {
+            if (searchGender === person.gender){
+                return true;};
+            if (searchGender != person.gender)
+            {   return false;
             };
-        return foundPerson;
-    })}
+    })
+        return gender
+}
     function searchByDob(){
         let searchDob = prompt("What is the person's date of birth?", chars);
     
