@@ -167,7 +167,7 @@ function searchByTraits(people) {
     function searchByDob(){
         let searchDob = prompt("What is the person's date of birth?", chars);
     
-        let dob = people.filter(function (person) {
+        let dob = person.filter(function (person) {
             if (searchDob=== person.dob){
                 return true;}
                 if (searchDob != person.dob)
@@ -178,7 +178,7 @@ function searchByTraits(people) {
     }
     function searchByHeight(){
         let searchHeight = prompt("What is the person's height?", chars);
-        let height = people.filter(function (person) {
+        let height = person.filter(function (person) {
             if (searchHeight=== person.height){
                 return true;}
                 if (searchHeight != person.height)
@@ -189,7 +189,7 @@ function searchByTraits(people) {
     } 
     function searchByWeight(){
         let searchWeight = prompt("What is the person's weight", chars);
-        let weights = people.filter(function (person) {
+        let weights = person.filter(function (person) {
             if (searchWeight=== person.height){
                 return true;}
                 if (searchWeight != person.Weight)
@@ -200,7 +200,7 @@ function searchByTraits(people) {
     }  
     function searchByEyeColor(){
         let SearchEyeColor = prompt("What is the person's eye color?", chars);
-        let eyeColor = people.filter(function (person) {
+        let eyeColor = person.filter(function (person) {
             if (SearchEyeColor=== person.eyeColor){
                 return true;}
                 if (SearchEyeColor != person.eyeColor)
@@ -211,7 +211,7 @@ function searchByTraits(people) {
     }
     function searchByOccupation(){
         let SearchOccupation = prompt("What is the person's occupation?", chars);
-        let occupation = people.filter(function (person) {
+        let occupation = person.filter(function (person) {
             if (SearchOccupation=== person.occupation){
                 return true;}
                 if (SearchOccupation != person.occupation)
@@ -220,7 +220,7 @@ function searchByTraits(people) {
         });
         return occupation;
     }
-function findPersonFamily(people){
+function findPersonFamily(person, people){
     let personFamily = prompt('Do you want to search for Spouse, Siblings, or Parents?')
     switch (personFamily){
         case "Spouse":
@@ -234,31 +234,31 @@ function findPersonFamily(people){
         break;
     }
 function searchBySpouse(person, people){
-    let findSpouse = people.filter(function(person){
+    let findSpouse = person.filter(function(person){
         if (person.currentSpouse === people.id){
             return true
         }
         
     })
-    return foundPerson
+    return findSpouse
 }
 function searchBySiblings(person, people){
-    let findSiblings = people.filter(function(person){
+    let findSiblings = person.filter(function(person){
         if (person.parent === person.parent){
             return true
         }
         
     })
-    return foundPerson
+    return findSiblings
 } 
 function searchByParents(person, people){
-    let findParent = people.filter(function(person){
+    let findParent = person.filter(function(person){
         if (person.parent === people.id){
             return true
         }
         
     })
-    return foundPerson
+    return findParent
 }
 }
 /**
