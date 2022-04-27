@@ -221,29 +221,35 @@ function searchByTraits(people) {
         return occupation;
     }
 function findPersonFamily(person, people){
+    let searchResults;
     let personFamily = prompt('Do you want to search for Spouse, Siblings, or Parents?')
     switch (personFamily){
         case "Spouse":
-        searchResults = searchBySpouse(people);
+        searchResults= searchBySpouse( person, people)
+        let findSpouse =displayPeople(searchResults)
         break;
         case "Siblings":
-        searchResults = searchBySiblings(people);
+        searchResults = searchBySiblings(person,people);
         break;
         case "Parents":
-        searchResults = searchByParents(people);
+        searchResults = searchByParents(person,people);
         break;
     }
 function searchBySpouse(person, people){
-    let findSpouse = person.filter(function(person){
-        if (person.currentSpouse === people.id){
+    let findSpouse = people.filter(function(people){
+        if (people.currentSpouse=== person.id){
             return true
-        }
+        };
+        if  (people.currentSpouse != person.id)
+        {return false;
+        };
         
-    })
+    });
     return findSpouse
+    
 }
 function searchBySiblings(person, people){
-    let findSiblings = person.filter(function(person){
+    let findSiblings = people.filter(function(people){
         if (person.parent === person.parent){
             return true
         }
@@ -252,7 +258,7 @@ function searchBySiblings(person, people){
     return findSiblings
 } 
 function searchByParents(person, people){
-    let findParent = person.filter(function(person){
+    let findParent = people.filter(function(people){
         if (person.parent === people.id){
             return true
         }
