@@ -59,7 +59,7 @@ function mainMenu(person, people) {
         return app(people);
     }
     let displayOption = prompt(
-        `Found ${people.firstName} ${people.lastName}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
+        `Found ${person[0].firstName} ${person[0].lastName}. Do you want to know their 'info', 'family', or 'descendants'? \n Type the option you want or type 'restart' or 'quit'.`
     );
     // Routes our application based on the user's input
     switch (displayOption) {
@@ -177,7 +177,7 @@ function searchByTraits(people) {
         return dob;
     }
     function searchByHeight(){
-        let searchHeight = promptFor("What is the person's height?", chars);
+        let searchHeight = prompt("What is the person's height?", chars);
         let height = people.filter(function (person) {
             if (searchHeight=== person.height){
                 return true;}
@@ -188,7 +188,7 @@ function searchByTraits(people) {
         return height;
     } 
     function searchByWeight(){
-        let searchWeight = promptFor("What is the person's weight", chars);
+        let searchWeight = prompt("What is the person's weight", chars);
         let weights = people.filter(function (person) {
             if (searchWeight=== person.height){
                 return true;}
@@ -199,7 +199,7 @@ function searchByTraits(people) {
         return weights;
     }  
     function searchByEyeColor(){
-        let SearchEyeColor = promptFor("What is the person's eye color?", chars);
+        let SearchEyeColor = prompt("What is the person's eye color?", chars);
         let eyeColor = people.filter(function (person) {
             if (SearchEyeColor=== person.eyeColor){
                 return true;}
@@ -210,7 +210,7 @@ function searchByTraits(people) {
         return eyeColor;
     }
     function searchByOccupation(){
-        let SearchOccupation = promptFor("What is the person's occupation?", chars);
+        let SearchOccupation = prompt("What is the person's occupation?", chars);
         let occupation = people.filter(function (person) {
             if (SearchOccupation=== person.occupation){
                 return true;}
@@ -221,7 +221,7 @@ function searchByTraits(people) {
         return occupation;
     }
 function findPersonFamily(people){
-    let personFamily = promptFor('Do you want to search for Spouse, Siblings, or Parents?')
+    let personFamily = prompt('Do you want to search for Spouse, Siblings, or Parents?')
     switch (personFamily){
         case "Spouse":
         searchResults = searchBySpouse(people);
