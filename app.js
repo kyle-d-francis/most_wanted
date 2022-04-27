@@ -230,9 +230,11 @@ function findPersonFamily(person, people){
         break;
         case "Siblings":
         searchResults = searchBySiblings(person,people);
+        let findSiblings = displayPeople(searchResults)
         break;
         case "Parents":
         searchResults = searchByParents(person,people);
+        let findParent = displayPeople(searchResults)
         break;
     }
 function searchBySpouse(person, people){
@@ -250,16 +252,19 @@ function searchBySpouse(person, people){
 }
 function searchBySiblings(person, people){
     let findSiblings = people.filter(function(people){
-        if (person.parent === person.parent){
+        if (people.parents == person.parents){
             return true
-        }
+        };
+        if (people.parents != person.parents){
+            return false
+        };
         
-    })
+    });
     return findSiblings
 } 
 function searchByParents(person, people){
     let findParent = people.filter(function(people){
-        if (person.parent === people.id){
+        if (person.parents == people.id){
             return true
         }
         
