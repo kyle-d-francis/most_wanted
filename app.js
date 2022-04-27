@@ -59,7 +59,7 @@ function mainMenu(person, people) {
         return app(people);
     }
     let displayOption = prompt(
-        `Found ${person.firstName.toString()} ${person.lastName.toString()}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
+        `Found ${people.every(firstName)} ${people.every(lastName)}. Do you want to know their 'info', 'family', or 'descendants'?\nType the option you want or type 'restart' or 'quit'.`
     );
     // Routes our application based on the user's input
     switch (displayOption) {
