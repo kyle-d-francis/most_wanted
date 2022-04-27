@@ -120,28 +120,28 @@ function searchByTraits(people) {
     // Routes our application based on the user's input
     switch (searchTraits) {
         case "gender":
-            searchResults = searchByGender(people);
-
-            break;
+            searchResults = searchByGender(people)
+            let gender = displayPeople(searchResults);
+            break ;
         case "dob":
             searchResults = searchByDob(people);
-
-            break;
+           let dob = displayPeople(searchResults);
+           break;
         case "height":
             searchResults = searchByHeight(people);
-
+           let height = displayPeople(searchResults);
             break;
         case "weight":
             searchResults = searchByWeight(people);
-
-            break;
+           let weight= displayPeople(searchResults);
+            break
         case "eye color":
             searchResults = searchByEyeColor(people);
-
+           let eyeColor= displayPeople(searchResults);
             break;
         case "occupations": 
             searchResults = searchByOccupation(people);
-
+          let occupations= displayPeople(searchResults);
             break;
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
