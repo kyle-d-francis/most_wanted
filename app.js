@@ -252,10 +252,10 @@ function searchBySpouse(person, people){
 }
 function searchBySiblings(person, people){
     let findSiblings = people.filter(function(people){
-        if (people.parents == person.parents){
+        if (people.parents.includes(person.parents)){
             return true
         };
-        if (people.parents != person.parents){
+        if (!people.parents.includes(person.parents)){
             return false
         };
         
@@ -264,11 +264,14 @@ function searchBySiblings(person, people){
 } 
 function searchByParents(person, people){
     let findParent = people.filter(function(people){
-        if (person.parents == people.id){
-            return true
-        }
+        if (!people.parents.includes(people.id)){
+            return false
+        };
+        if (person.parents.includes(people.id)){
+            return true;
+        };
         
-    })
+    });
     return findParent
 }
 }
