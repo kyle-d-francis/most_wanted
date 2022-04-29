@@ -114,35 +114,73 @@ function mainMenu(person, people) {
 // End of searchByName()
 function searchByTraits(people) {
     let searchTraits = prompt(
-        "what traits do you want to search by enter 'gender', 'dob', 'height' , 'weight' 'eye color' , or ' occupation'",
+        "what traits do you want to search by enter 'gender', 'dob', 'height' , 'weight' 'eye color' , or ' occupation'? For eye color type 'eye'",
     ).toLowerCase();
-    let searchResults;
+    let searchResults = [];
+    let gender;
+    let dob;
+    let height;
+    let weight;
+    let eye;
+    let occupations;  
     // Routes our application based on the user's input
-    switch (searchTraits) {
+    let multipleTraits = searchTraits.split(" ", 5);
+    for(let traits of multipleTraits)
+    switch (traits) {
         case "gender":
-            searchResults = searchByGender(people)
-            let gender = displayPeople(searchResults);
-            break ;
+        gender = searchByGender(people)
+        {if (multipleTraits.length == 1){   
+        searchResults = displayPeople(gender)}
+        else if(multipleTraits.length > 1){
+        searchResults = searchResults.concat(gender)}{
+            continue
+        }}
+        
+            
         case "dob":
-            searchResults = searchByDob(people);
-           let dob = displayPeople(searchResults);
-           break;
+           dob = searchByDob(people)
+            {if (multipleTraits.length == 1){   
+                searchResults = displayPeople(dob)}
+                else if(multipleTraits.length > 1){
+                searchResults=searchResults.concat(dob)}{
+                    continue
+                }}
         case "height":
-            searchResults = searchByHeight(people);
-           let height = displayPeople(searchResults);
-            break;
+            height = searchByHeight(people)
+            {if (multipleTraits.length == 1){   
+                searchResults = displayPeople(height)}
+                else if(multipleTraits.length > 1){
+                searchResults = searchResults.concat(height)}{
+                    continue
+                }}
+            
         case "weight":
-            searchResults = searchByWeight(people);
-           let weight= displayPeople(searchResults);
-            break
-        case "eye color":
-            searchResults = searchByEyeColor(people);
-           let eyeColor= displayPeople(searchResults);
-            break;
+            weight = searchByWeight(people)
+            {if (multipleTraits.length == 1){   
+                searchResults = displayPeople(weight)}
+                else if(multipleTraits.length > 1){
+               searchResults = searchResults.concat(weight)}{
+                    continue
+                }}
+            
+        case "eye":
+            eye = searchByEyeColor(people)
+            {if (multipleTraits.length == 1){   
+                searchResults = displayPeople(eye)}
+                else if(multipleTraits.length > 1){
+                searchResults= searchResults.concat(eye)}{
+                    continue
+                }}
+            
         case "occupations": 
-            searchResults = searchByOccupation(people);
-          let occupations= displayPeople(searchResults);
-            break;
+            occupations = searchByOccupation(people)
+            {if (multipleTraits.length == 1){   
+                searchResults = displayPeople(occupations)}
+                else if(multipleTraits.length > 1){
+                searchResults = searchResults.concat(occupations)} {
+                    continue
+                }}
+          
         default:
             // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
             app(people);
@@ -150,7 +188,21 @@ function searchByTraits(people) {
     }
 
     // Calls the mainMenu() only AFTER we find the SINGLE PERSON
-    mainMenu(searchResults, people);
+ 
+
+
+concatPeople(searchResults)
+}
+function concatPeople(searchResults){
+    let uniqueElements = new Set(searchResults)
+    let results = searchResults.filter(function(item){
+    if (uniqueElements.has(item)){
+        uniqueElements.delete(item);}
+        else{return item}
+    }
+    
+);
+displayPeople(results)
 }
     function searchByGender(person, people){
         let searchGender = prompt(`What is the person's gender?`);
@@ -164,8 +216,8 @@ function searchByTraits(people) {
     })
         return gender
 }
-    function searchByDob(){
-        let searchDob = prompt("What is the person's date of birth?", chars);
+    function searchByDob(person,people){
+        let searchDob = prompt("What is the person's date of birth?");
     
         let dob = person.filter(function (person) {
             if (searchDob=== person.dob){
@@ -176,8 +228,8 @@ function searchByTraits(people) {
         });
         return dob;
     }
-    function searchByHeight(){
-        let searchHeight = prompt("What is the person's height?", chars);
+    function searchByHeight(person,people){
+        let searchHeight = prompt("What is the person's height?");
         let height = person.filter(function (person) {
             if (searchHeight=== person.height){
                 return true;}
@@ -187,8 +239,8 @@ function searchByTraits(people) {
         });
         return height;
     } 
-    function searchByWeight(){
-        let searchWeight = prompt("What is the person's weight", chars);
+    function searchByWeight(person,people){
+        let searchWeight = prompt("What is the person's weight");
         let weights = person.filter(function (person) {
             if (searchWeight=== person.height){
                 return true;}
@@ -198,19 +250,19 @@ function searchByTraits(people) {
         });
         return weights;
     }  
-    function searchByEyeColor(){
-        let SearchEyeColor = prompt("What is the person's eye color?", chars);
-        let eyeColor = person.filter(function (person) {
+    function searchByEyeColor(person,people)
+        let SearchEyeColor = prompt("What is the person's eye color?");
+        let eye = person.filter(function (person) {
             if (SearchEyeColor=== person.eyeColor){
                 return true;}
                 if (SearchEyeColor != person.eyeColor)
                 {return false;
                 };
         });
-        return eyeColor;
+        return eye;
     }
-    function searchByOccupation(){
-        let SearchOccupation = prompt("What is the person's occupation?", chars);
+    function searchByOccupation(person,people){
+        let SearchOccupation = prompt("What is the person's occupation?");
         let occupation = person.filter(function (person) {
             if (SearchOccupation=== person.occupation){
                 return true;}
