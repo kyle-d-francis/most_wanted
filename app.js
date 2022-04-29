@@ -250,8 +250,8 @@ displayPeople(results)
         });
         return weights;
     }  
-    function searchByEyeColor(person,people)
-        let SearchEyeColor = prompt("What is the person's eye color?");
+    function searchByEyeColor(person,people){
+        let searchEyeColor = prompt("What is the person's eye color?");
         let eye = person.filter(function (person) {
             if (SearchEyeColor=== person.eyeColor){
                 return true;}
