@@ -231,7 +231,7 @@ displayPeople(results)
     function searchByHeight(person,people){
         let searchHeight = prompt("What is the person's height?");
         let height = person.filter(function (person) {
-            if (searchHeight=== person.height){
+            if (searchHeight== person.height){
                 return true;}
                 if (searchHeight != person.height)
                 {return false;
@@ -242,9 +242,9 @@ displayPeople(results)
     function searchByWeight(person,people){
         let searchWeight = prompt("What is the person's weight");
         let weights = person.filter(function (person) {
-            if (searchWeight=== person.height){
+            if (searchWeight== person.weight){
                 return true;}
-                if (searchWeight != person.Weight)
+                if (searchWeight != person.weight)
                 {return false;
                 };
         });
